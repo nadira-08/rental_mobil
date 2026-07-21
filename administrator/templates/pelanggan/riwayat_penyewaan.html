@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Riwayat Penyewaan</title>
+
+    <style>
+        body{
+            font-family: Arial;
+            background:#f4f6f9;
+            margin:0;
+        }
+
+        .header{
+            background:#2c5d73;
+            color:#ffd54f;
+            padding:20px 40px;
+            font-size:30px;
+            font-weight:bold;
+        }
+
+        .container{
+            width:90%;
+            margin:30px auto;
+            background:white;
+            padding:20px;
+            border-radius:8px;
+            box-shadow:0 2px 8px rgba(0,0,0,.15);
+        }
+
+        table{
+            width:100%;
+            border-collapse:collapse;
+        }
+
+        th{
+            background:#2c5d73;
+            color:white;
+            padding:12px;
+        }
+
+        td{
+            padding:10px;
+            border-bottom:1px solid #ddd;
+            text-align:center;
+        }
+
+        tr:hover{
+            background:#f2f2f2;
+        }
+
+        .btn{
+            background:#2c5d73;
+            color:white;
+            padding:10px 18px;
+            text-decoration:none;
+            border-radius:5px;
+        }
+    </style>
+
+</head>
+
+<body>
+
+<div class="header">
+    Rental Mobil
+</div>
+
+<div class="container">
+
+<h2>Riwayat Penyewaan Saya</h2>
+
+<table>
+
+<tr>
+    <th>Mobil</th>
+    <th>Tanggal Sewa</th>
+    <th>Tanggal Kembali</th>
+    <th>Lama Sewa</th>
+    <th>Total Biaya</th>
+    <th>Status</th>
+</tr>
+
+{% for p in penyewaans %}
+
+<tr>
+
+<td>{{ p.mobil.nama_mobil }}</td>
+
+<td>{{ p.tanggal_sewa }}</td>
+
+<td>{{ p.tanggal_kembali }}</td>
+
+<td>{{ p.lama_sewa }} Hari</td>
+
+<td>Rp {{ p.total_biaya }}</td>
+
+<td>{{ p.get_status_display }}</td>
+
+</tr>
+
+{% empty %}
+
+<tr>
+<td colspan="6">
+Belum ada riwayat penyewaan.
+</td>
+</tr>
+
+{% endfor %}
+
+</table>
+
+<br>
+
+<a href="/pelanggan/" class="btn">
+← Kembali ke Dashboard
+</a>
+
+</div>
+
+</body>
+</html>
